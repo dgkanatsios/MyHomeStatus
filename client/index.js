@@ -90,7 +90,7 @@ function loop() {
         if (result !== null) { //if valid temperature
 
             //add rest of the properties
-            result.light = resLight || helpers.NOT_AVAILABLE;
+            result.light = resLight;
             result.soundAvg = resLoudness.avg;
             result.soundMax = resLoudness.max;
             result.dustAvg = resDust.avg;
