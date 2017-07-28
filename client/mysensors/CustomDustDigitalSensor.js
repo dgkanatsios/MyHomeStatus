@@ -12,7 +12,8 @@ DustDigitalSensor.prototype = new DigitalSensor();
 DustDigitalSensor.prototype.read = function () {
     const write = this.board.writeBytes(commands.dustSensorRead.concat([this.pin, commands.unused, commands.unused]));
     if (write) {
-        this.board.wait(200);
+        //probably not needed
+        //this.board.wait(200);
         const bytes = this.board.readBytes();
         //console.log((bytes instanceof Buffer) + ' ' + bytes[0] + ' ' + bytes[1] + ' ' + bytes[2] + ' ' + bytes[3]);
         if (bytes instanceof Buffer && bytes[1] != 0)
