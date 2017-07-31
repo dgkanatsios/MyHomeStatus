@@ -15,13 +15,13 @@ let board = null,
 let button = null;
 
 const options = {
-    testRotary: false,
+    testRotary: true,
     testLoudness: false,
     testButton: false,
     testDHT: false,
     testLightAnalog: false,
-    testDust: true,
-    testMotion: true,
+    testDust: false,
+    testMotion: false,
     testBuzzerOnMotion: false
 }
 
@@ -47,6 +47,10 @@ function start() {
                     rotaryAngle.on('data', function (res) {
                         console.log('Rotary angle: ' + res);
                     });
+                    // rotaryAngle.on('change', function (res) {
+                    //     console.log('Rotary angle: ' + res);
+                    // });
+                    // rotaryAngle.watch();
                 }
 
                 if (options.testButton) {

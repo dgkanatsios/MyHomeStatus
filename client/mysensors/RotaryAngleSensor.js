@@ -5,20 +5,14 @@ const FULL_ANGLE = 300;
 function RotaryAngleSensor(pin, watchDelay, samplesize) {
     AnalogSensor.apply(this, Array.prototype.slice.call(arguments));
     this.watchDelay = watchDelay || 10;
-    this.samplesize = samplesize || 40;
+    this.samplesize = samplesize || 10;
     //watchDelay * samplesize equals the miliseconds interval that the sensor will report data
 }
 RotaryAngleSensor.prototype = new AnalogSensor();
 
 RotaryAngleSensor.prototype.read = function () {
     let value = AnalogSensor.prototype.read.call(this);
-
-    let degrees = convertDHTToDegrees(value);
-
-    //Calculate result (0 to 100) from degrees(0 to 300)
-    let result = Math.floor(degrees / FULL_ANGLE * 100);
-
-    return result;
+    return value;
 }
 
 const convertDHTToDegrees = function (value) {
@@ -41,28 +35,45 @@ RotaryAngleSensor.prototype.stop = function () {
 }
 
 //new array initialized to zero
-let temp = Array.apply(null, Array(101)).map(Number.prototype.valueOf, 0); //0..100
+let tempArray = new Array();
 let timesRun = 0;
 
 let previousData = null;
 
 function loop() {
     const reading = this.read();
-    if (reading < 0 || reading > 100) throw new Error('improper reading');
+    if (reading < 0 || reading > 1024) throw new Error('improper reading');
 
-    temp[reading]++;
+    const readingEntry = tempArray.find(x => x.reading === reading);
+
+    if (readingEntry === undefined) {
+        tempArray.push({
+            times: 1,
+            reading
+        });
+    } else {
+        readingEntry.times++;
+    }
+
     if (++timesRun === this.samplesize) {
-        //find the index of the biggest integer
-        const result = temp.indexOf(Math.max(...temp));
+
+        const maxTimes = Math.max.apply(Math, tempArray.map(readingEntry => readingEntry.times));
+        //console.log(`maxTimes ${maxTimes}`);
+        const result = tempArray.find(readingEntry => readingEntry.times === maxTimes);
+        //console.log(`result ${JSON.stringify(result)}`);
         timesRun = 0;
-        //reset the array
-        temp = Array.apply(null, Array(101)).map(Number.prototype.valueOf, 0);
-        
+        tempArray = new Array();
+
+        let degrees = convertDHTToDegrees(result.reading);
+        //console.log(`degrees ${degrees}`);
+        //Calculate result (0 to 100) from degrees(0 to 300)
+        let finalResult = Math.floor(degrees / FULL_ANGLE * 100);
+        //console.log(`finalResult ${finalResult}`);
         //compare current data to previous data
-        if (Math.abs(result - previousData) != 0) {
+        if (Math.abs(finalResult - previousData) != 0) {
             //there are new data
-            this.emit('data', result);
-            previousData = result;
+            this.emit('data', finalResult);
+            previousData = finalResult;
         }
     }
 }
