@@ -25,8 +25,8 @@ function DigitalButton(pin, longpressDelay) {
             //do nothing
             return;
         } else { //res == 0 so user has lifted her finger
-            let currentDateTime = new Date();
-            let miliseconds = currentDateTime.getTime() - datetimePressed.getTime();
+            const currentDateTime = new Date();
+            const miliseconds = currentDateTime.getTime() - datetimePressed.getTime();
             //if less than longgpressDelay miliseconds
             if (miliseconds <= longpressDelay) {
                 this.emit('down', 'singlepress');

@@ -70,12 +70,10 @@ DustDigitalSensor.prototype.readAvgMax = function () {
         max: helpers.NOT_AVAILABLE
     };
 
-    let sum = this.results.reduce((acc, cur) => acc + cur, 0);
-    let avg = sum / this.results.length;
+    const sum = this.results.reduce((acc, cur) => acc + cur, 0);
+    const avg = sum / this.results.length;
 
-    let max = this.results.reduce(function (a, b) {
-        return Math.max(a, b);
-    });
+    const max = this.results.reduce((a, b) => Math.max(a, b));
 
     //reset the array
     this.results = new Array();

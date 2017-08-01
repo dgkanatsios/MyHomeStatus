@@ -12,10 +12,10 @@ LoudnessSensor.prototype.readAvgMax = function () {
   if (this.results.length == 0)
     throw new Error('no results. Did you call start()?');
 
-  let sum = this.results.reduce((acc, cur) => acc + cur, 0);
-  let avg = sum / this.results.length;
+  const sum = this.results.reduce((acc, cur) => acc + cur, 0);
+  const avg = sum / this.results.length;
 
-  let max = this.results.reduce(function (a, b) {
+  const max = this.results.reduce(function (a, b) {
     return Math.max(a, b);
   });
 
@@ -38,7 +38,7 @@ LoudnessSensor.prototype.stop = function () {
 }
 
 function loop() {
-  let currentResult = this.read();
+  const currentResult = this.read();
   this.results.push(currentResult);
 }
 

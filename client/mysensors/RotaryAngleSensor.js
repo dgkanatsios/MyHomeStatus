@@ -11,16 +11,16 @@ function RotaryAngleSensor(pin, watchDelay, samplesize) {
 RotaryAngleSensor.prototype = new AnalogSensor();
 
 RotaryAngleSensor.prototype.read = function () {
-    let value = AnalogSensor.prototype.read.call(this);
+    const value = AnalogSensor.prototype.read.call(this);
     return value;
 }
 
 const convertDHTToDegrees = function (value) {
     //http://wiki.seeed.cc/Grove-Rotary_Angle_Sensor/
-    let adc_ref = 5;
-    let grove_vcc = 5;
+    const adc_ref = 5;
+    const grove_vcc = 5;
 
-    let voltage = helpers.round((value) * adc_ref / 1023, 2);
+    const voltage = helpers.round((value) * adc_ref / 1023, 2);
 
     //Calculate rotation in degrees(0 to 300)
     return helpers.round((voltage * FULL_ANGLE) / grove_vcc, 2);
@@ -57,18 +57,21 @@ function loop() {
 
     if (++timesRun === this.samplesize) {
 
+        //find max number of times
         const maxTimes = Math.max.apply(Math, tempArray.map(readingEntry => readingEntry.times));
-        //console.log(`maxTimes ${maxTimes}`);
+        //find max result based on this max times
         const result = tempArray.find(readingEntry => readingEntry.times === maxTimes);
-        //console.log(`result ${JSON.stringify(result)}`);
+
+        //reset the array
         timesRun = 0;
         tempArray = new Array();
 
-        let degrees = convertDHTToDegrees(result.reading);
-        //console.log(`degrees ${degrees}`);
+        //convert to degrees
+        const degrees = convertDHTToDegrees(result.reading);
+
         //Calculate result (0 to 100) from degrees(0 to 300)
-        let finalResult = Math.floor(degrees / FULL_ANGLE * 100);
-        //console.log(`finalResult ${finalResult}`);
+        const finalResult = Math.floor(degrees / FULL_ANGLE * 100);
+
         //compare current data to previous data
         if (Math.abs(finalResult - previousData) != 0) {
             //there are new data

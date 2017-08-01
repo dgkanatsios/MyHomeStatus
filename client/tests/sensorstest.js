@@ -47,6 +47,7 @@ function start() {
                     rotaryAngle.on('data', function (res) {
                         console.log('Rotary angle: ' + res);
                     });
+                    
                     // rotaryAngle.on('change', function (res) {
                     //     console.log('Rotary angle: ' + res);
                     // });
@@ -104,25 +105,25 @@ function start() {
 
 function loudnessLoop() {
     if (!loudness) throw Error('you need to initialize the sensor');
-    let res = loudness.readAvgMax();
+    const res = loudness.readAvgMax();
     console.log(`Current avg sound value: ${res.avg}, max: ${res.max}`);
 }
 
 function dhtLoop() {
-    let res = dhtsensor.read();
-    let resTemp = helpers.parsedht(res);
+    const res = dhtsensor.read();
+    const resTemp = helpers.parsedht(res);
     console.log('Current temperature  value (temp,hum,heatindex):' + JSON.stringify(resTemp));
 }
 
 function lightanalogLoop() {
-    let res = lightAnalog.read();
+    const res = lightAnalog.read();
     console.log('Current light value:' + res);
 }
 
 function dustLoop() {
     if (!dust) throw Error('you need to initialize the sensor');
 
-    let res = dust.readAvgMax();
+    const res = dust.readAvgMax();
     console.log(`Current avg concentration ${res.avg} and max: ${res.max} pcs/0.01cf`);
 }
 

@@ -51,16 +51,16 @@ const start = function () {
 function handleRotaryAngle(value) {
     api.groups().then(result => {
         //get the group we're interested
-        let group = result.filter(x => x.id === groupID.toString())[0];
+        const group = result.filter(x => x.id === groupID.toString())[0];
         if (group.state.all_on) {
-            let state = lightState.create().brightness(value);
+            const state = lightState.create().brightness(value);
             api.setGroupLightState(groupID, state).then(handleBrightnessChangeResult).catch(err => console.log(err)).done();
         }
     }).done();
 }
 
 function changeScene() {
-    let sceneToActivate = scenes[sceneIndex++];
+    const sceneToActivate = scenes[sceneIndex++];
     if (sceneIndex === scenes.length)
         sceneIndex = 0;
     api.activateScene(sceneToActivate).then(handleSceneChangeResult).catch(err => console.log(err)).done();
@@ -69,7 +69,7 @@ function changeScene() {
 function turnLightsOnOff() {
     api.groups().then(result => {
         //get the group we're interested
-        let group = result.filter(x => x.id === groupID.toString())[0];
+        const group = result.filter(x => x.id === groupID.toString())[0];
         let state;
         if (group.state.all_on) {
             state = lightState.create().off();

@@ -81,7 +81,7 @@
             var host = window.location.hostname;
             $(document).ready(function () {
                 $.getJSON('/latest', function (data) {
-                    let obj = JSON.parse(data);
+                    const obj = JSON.parse(data);
                     for (var property in obj) {
                         if (obj.hasOwnProperty(property)) {
                             console.log(property + ' ' + obj[property]);
