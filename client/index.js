@@ -60,7 +60,7 @@ const board = new Board({
                     motionDetectedWithinLastMinute = moment.utc();
                 }
             });
-            motion.watch(200);
+            motion.watch(100);
             console.log('PIR Motion sensor initialized');
 
             huehandler.start();

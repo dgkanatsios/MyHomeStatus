@@ -12,3 +12,5 @@ chmod +x start.sh
 ```
 
 If you want to use Hue related sensors, do not forget to set HUE_HOST and HUE_USER environmental variables.
+
+If you want this to run at boot, use [crontab](https://www.raspberrypi.org/documentation/linux/usage/cron.md).
