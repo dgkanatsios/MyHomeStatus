@@ -2,6 +2,8 @@
 
 Node.js script for MyHomeStatus client. 
 
+Install [Docker for Raspberry Pi](https://www.raspberrypi.org/blog/docker-comes-to-raspberry-pi/)
+
 ```bash
 npm install -g forever
 npm install

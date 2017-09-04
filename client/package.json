@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "forever": "^0.15.3",
     "i2c-bus": "^1.2.2",
     "moment": "^2.18.1",
     "node-grovepi": "^2.1.1",
