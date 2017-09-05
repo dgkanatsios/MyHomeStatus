@@ -1,4 +1,8 @@
 require('dotenv').config();
+const appInsights = require("applicationinsights");
+appInsights.setup(process.env.APPINSIGHTS_KEY);
+appInsights.start();
+
 const helpers = require('./helpers');
 const express = require('express'),
     app = express(),

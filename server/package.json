@@ -11,7 +11,8 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "azure-storage": "^2.2.1",
+        "applicationinsights": "^0.21.0",
+        "azure-storage": "^2.4.0",
         "body-parser": "^1.17.2",
         "express": "^4.15.3",
         "moment": "^2.18.1"
