@@ -17,6 +17,19 @@ function handleError(msg){
     console.log(msg);
 }
 
+//gets a string containing json objects separated by LF and makes it an array
+function createJsonObjectsArrayFromString(jsonstring){
+    const array = jsonstring.split('\n');
+    return array;
+}
+
+//converts an array of json objects to string, separated by LF
+function createStringFromJsonObjects(jsonarray){
+    let jsonstring = '';
+    jsonarray.forEach(x=>jsonstring+=`${x}\n`);
+    return jsonstring;
+}
+
 const containerName = 'statuscontainer';
 const latestBlob = 'latest';
 const NOT_AVAILABLE = 'N/A';
@@ -27,5 +40,7 @@ module.exports = {
     handleError,
     containerName,
     latestBlob,
+    createJsonObjectsArrayFromString,
+    createStringFromJsonObjects,
     NOT_AVAILABLE
 }

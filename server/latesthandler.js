@@ -13,8 +13,8 @@ function uploadLatest(rawbody) {
             process.env.STORAGE_ACCESS_KEY);
         blobService.createContainerIfNotExists(helpers.containerName, function (error, result, response) {
             if (!error) {
-                // if result = true, container was created.
-                // if result = false, container already existed.
+                // if result = true, blob container was created.
+                // if result = false, blob container already existed.
                 const body = JSON.stringify(rawbody);
                 blobService.createBlockBlobFromText(helpers.containerName, helpers.latestBlob, body, function (error, result, response) {
                     if (!error) {
