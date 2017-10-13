@@ -15,9 +15,9 @@ chmod +x start.sh
 
 If you want to use Hue related sensors, do not forget to set HUE_HOST and HUE_USER environmental variables.
 
-If you want this to run at boot, use [crontab](https://www.raspberrypi.org/documentation/linux/usage/cron.md).
+Also, if you want this to run at boot, use [crontab](https://www.raspberrypi.org/documentation/linux/usage/cron.md).
 
-If you want to run this via Docker image
+However, I'd recommend to run this via Docker image. To accomplish this, follow the instructions
 
 Build Docker image from your development machine
 ```bash
@@ -42,3 +42,5 @@ docker run -d --restart always --privileged -e DEVICE_CREDENTIAL=$DEVICE_CREDENT
 ```
 
 To use /dev (and see I2C devices), you need to run with --privileged [link](https://stackoverflow.com/questions/40265984/i2c-inside-a-docker-container)
+
+If you want the env variables to be set at boot in your Raspberry Pi, write a shell script and place it on /etc/profile.d/ directory.

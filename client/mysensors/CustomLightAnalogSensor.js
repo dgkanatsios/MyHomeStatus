@@ -19,4 +19,4 @@ CustomLightAnalogSensor.prototype.read = function() {
     
 }
 
-module.exports = LightAnalogSensor
+module.exports = LightAnalogSensor;

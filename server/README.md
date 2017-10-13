@@ -1,6 +1,6 @@
 # MyHomeStatus Server
 
-Node.js script for MyHomeStatus server. 
+Node.js app for MyHomeStatus server. 
 
 Start by issuing the below commands
 ```bash

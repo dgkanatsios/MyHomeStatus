@@ -21,13 +21,13 @@ function uploadLatest(rawbody) {
                         resolve({
                             message: 'Upload OK!'
                         });
-                    } else {
+                    } else { //error in creating blockblob
                         reject({
                             message: error
                         });
                     }
                 });
-            } else {
+            } else { //error in creating container
                 reject({
                     message: error
                 });
