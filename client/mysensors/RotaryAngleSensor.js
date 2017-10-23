@@ -4,7 +4,7 @@ const FULL_ANGLE = 300;
 
 function RotaryAngleSensor(pin, watchDelay, samplesize) {
     AnalogSensor.apply(this, Array.prototype.slice.call(arguments));
-    this.watchDelay = watchDelay || 10;
+    this.watchDelay = watchDelay || 20;
     this.samplesize = samplesize || 20;
     //watchDelay * samplesize equals the miliseconds interval that the sensor will report data
 }
