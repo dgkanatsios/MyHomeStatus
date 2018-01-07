@@ -1,3 +1,5 @@
+[![unofficial Google Analytics for GitHub](https://gaforgithub.azurewebsites.net/api?repo=MyHomeStatus)](https://github.com/dgkanatsios/gaforgithub)
+
 # MyHomeStatus - WIP
 
 A utility that monitors home temperature and humidity using GrovePi and Raspberry PI and uploads them to Azure Storage.

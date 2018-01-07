@@ -1,3 +1,4 @@
+[![unofficial Google Analytics for GitHub](https://gaforgithub.azurewebsites.net/api?repo=MyHomeStatusClient)](https://github.com/dgkanatsios/gaforgithub)
 # MyHomeStatus Client
 
 Node.js script for MyHomeStatus client. 

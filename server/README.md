@@ -1,3 +1,5 @@
+[![unofficial Google Analytics for GitHub](https://gaforgithub.azurewebsites.net/api?repo=MyHomeStatusServer)](https://github.com/dgkanatsios/gaforgithub)
+
 # MyHomeStatus Server
 
 Node.js app for MyHomeStatus server. 
