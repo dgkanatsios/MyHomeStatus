@@ -78,11 +78,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/el.js"></script>
 
         <script>
-            var host = window.location.hostname;
+            let host = window.location.hostname;
             $(document).ready(function () {
                 $.getJSON('/latest', function (data) {
                     const obj = JSON.parse(data);
-                    for (var property in obj) {
+                    for (let property in obj) {
                         if (obj.hasOwnProperty(property)) {
                             console.log(property + ' ' + obj[property]);
                             if (property === 'datetime' || property ===

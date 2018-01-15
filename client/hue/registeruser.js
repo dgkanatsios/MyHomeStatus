@@ -8,7 +8,7 @@ hue.nupnpSearch(function (err, result) {
 
     const host = result[0].ipaddress;
 
-    var displayUserResult = function (result) {
+    let displayUserResult = function (result) {
         console.log("Created user: " + JSON.stringify(result));
     };
     console.log(host);

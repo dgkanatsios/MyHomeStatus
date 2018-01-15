@@ -1,10 +1,10 @@
 const HueApi = require("node-hue-api").HueApi;
 
-var displayResults = function(result) {
+let displayResults = function(result) {
     console.log(JSON.stringify(result, null, 2));
 };
 
-var host = process.env.HUE_HOST,
+let host = process.env.HUE_HOST,
     username = process.env.HUE_USER,
     api;
 

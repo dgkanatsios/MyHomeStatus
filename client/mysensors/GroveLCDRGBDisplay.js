@@ -27,13 +27,13 @@ const colorBlue   = [ 55, 55,255];
 const colorBlack  = [  0,  0,  0];
 const colorPink   = [238,  0,238];
 
-var i2c = null;
+let i2c = null;
 
 /**
  * Constructor 
  * @param i2c1	I2C Comm port display is connected on
  */
-var GroveLCDRGBDisplay = class GroveLCDRGBDisplay {
+let GroveLCDRGBDisplay = class GroveLCDRGBDisplay {
 	constructor(i2c) { 
 //		console.log("constructor");
 		this.i2c = i2c;
@@ -126,9 +126,9 @@ var GroveLCDRGBDisplay = class GroveLCDRGBDisplay {
 		this.textCommand(0x08 | 0x04); // Display Control (LCD_DISPLAYCONTROL 8 = 1000) ==> LCD_MOVERIGHT Entry Mode (LCD_ENTRYMODESET 4 = 0100)...could just use 0x0c (c=1100)
 		this.textCommand(0x20 | 0x08); // Function set (LCD_FUNCTIONSET 2 = 0010)  ==>   LCD_2LINE Display Control (LCD_DISPLAYCONTROL 8 = 1000)...could just use 0x28
 		sleep.msleep(5);
-		var count = 0;
-		var row = 0;
-		for (var i = 0, len = text.length; i < len; i++) {
+		let count = 0;
+		let row = 0;
+		for (let i = 0, len = text.length; i < len; i++) {
 			if (text[i] === '\n' || count === 16) {
 				count = 0;
 				row++;
