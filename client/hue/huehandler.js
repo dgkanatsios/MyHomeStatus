@@ -60,10 +60,15 @@ function handleRotaryAngle(value) {
 }
 
 function changeScene() {
-    const sceneToActivate = scenes[sceneIndex++];
-    if (sceneIndex === scenes.length)
-        sceneIndex = 0;
-    api.activateScene(sceneToActivate).then(handleSceneChangeResult).catch(err => console.log(err)).done();
+    api.groups().then(result => {
+        const group = result.filter(x => x.id === groupID.toString())[0];
+        if (group.state.all_on) { //change scene only if lights are on
+            const sceneToActivate = scenes[sceneIndex++];
+            if (sceneIndex === scenes.length)
+                sceneIndex = 0;
+            api.activateScene(sceneToActivate).then(handleSceneChangeResult).catch(err => console.log(err)).done();
+        }
+    }).done();
 }
 
 function turnLightsOnOff() {
