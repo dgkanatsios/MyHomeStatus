@@ -15,7 +15,7 @@
         "azure-storage": "^2.4.0",
         "body-parser": "^1.17.2",
         "express": "^4.15.3",
-        "moment": "^2.18.1"
+        "moment": "^2.19.3"
     },
     "devDependencies": {
         "dotenv": "^4.0.0"
